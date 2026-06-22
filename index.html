@@ -390,6 +390,14 @@
       gap: 6px;
     }
 
+    .comment-control {
+      align-self: center;
+    }
+
+    .comment-control label {
+      visibility: hidden;
+    }
+
     .training-row input[type="checkbox"] {
       width: 22px;
       height: 22px;
@@ -627,7 +635,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     // Paste your Supabase values here before uploading to GitHub Pages.
-    const SUPABASE_URL = "https://ilfjymuggctuoqckirsf.supabase.co";
+    const SUPABASE_URL = ""https://ilfjymuggctuoqckirsf.supabase.co";
     const SUPABASE_KEY = "sb_publishable_iElx9KMtWONdqvvGGmUT4Q_XNOvYF-q";
 
     let supabaseClient = null;
@@ -700,59 +708,67 @@
     const trainingGroups = [
       {
         category: "MGMT",
-        subtitle: "Management, policy, logging, MDS, and Smart-1 Cloud",
+        subtitle: "Management, policy, logging and monitoring, MDS, VSX, and Smart-1 Cloud",
         trainings: [
           { name: "MGMT Basics + HA", levels: ["One Level"] },
-          { name: "R80.X - Policy + GUI + API + ICA", levels: ["One Level"] },
+          { name: "R82.X - Policy + GUI + API + ICA", levels: ["One Level"] },
           { name: "MDS", levels: ["One Level"] },
           { name: "Upgrades & Logging", levels: ["One Level"] },
           { name: "VSX", levels: ["Basic", "Advanced"] },
-          { name: "Logs", levels: ["One Level"] },
+          { name: "Logging & Monitoring", levels: ["One Level"] },
           { name: "Smart-1 Cloud", levels: ["One Level"] }
         ]
       },
       {
         category: "HE",
-        subtitle: "Gateway, cluster, performance, routing, Maestro, VSNext, and cloud topics",
+        subtitle: "Gateway, cluster, performance, Maestro, VSNext, routing, and cloud topics",
         trainings: [
           { name: "Basics + Cluster", levels: ["One Level"] },
           { name: "Performance + SNMP", levels: ["One Level"] },
           { name: "VSNext / ElasticXL", levels: ["One Level"] },
-          { name: "VSX", levels: ["One Level"] },
           { name: "Maestro", levels: ["Basic", "Advanced"] },
-          { name: "Advanced Routing", levels: ["One Level"] },
-          { name: "CloudGuard", levels: ["Basic", "Advanced"] },
+          { name: "CloudGuard (Azure, AWS, ~GCP)", levels: ["Basic", "Advanced"] },
           { name: "Dynamic Routing", levels: ["Basic", "Advanced"] }
         ]
       },
       {
         category: "VPN",
-        subtitle: "Site-to-site, client-to-site, remote access, and MAB",
+        subtitle: "Site-to-site, remote access, client-to-site, and MAB",
         trainings: [
           { name: "Site To Site", levels: ["Basic", "Advanced"] },
-          { name: "Client To Site", levels: ["One Level"] },
-          { name: "Remote Access", levels: ["One Level"] },
+          { name: "Remote Access/Client To Site", levels: ["One Level"] },
           { name: "MAB", levels: ["One Level"] }
         ]
       },
       {
         category: "Security",
-        subtitle: "Networking, firewall, IPS, VOIP, Identity Awareness, and Threat Prevention",
+        subtitle: "Networking, IPS, VOIP, Identity Awareness, Threat Prevention, URLF, APPI, and HTTPSi",
         trainings: [
           { name: "Networking Training + NAT", levels: ["One Level"] },
-          { name: "FW-1 Training", levels: ["One Level"] },
           { name: "IPS", levels: ["One Level"] },
           { name: "VOIP", levels: ["One Level"] },
           { name: "Identity Awareness", levels: ["Basic", "Advanced"] },
-          { name: "Threat Prevention (Anti Bot, Anti Virus, Threat Extraction, Threat Emulation)", levels: ["One Level"] }
+          { name: "Threat Prevention (IPS, AB, AV)", levels: ["One Level"] },
+          { name: "Threat Emulation & Threat Extraction", levels: ["One Level"] },
+          { name: "URLF", levels: ["One Level"] },
+          { name: "APPI", levels: ["One Level"] },
+          { name: "HTTPSi", levels: ["One Level"] }
         ]
       },
       {
         category: "End Point",
-        subtitle: "Harmony Endpoint core training and troubleshooting",
+        subtitle: "Harmony Endpoint core training, troubleshooting, and on-prem server side",
         trainings: [
           { name: "Harmony Endpoint", levels: ["Basic", "Advanced"] },
-          { name: "Harmony Endpoint Troubleshooting", levels: ["One Level"] }
+          { name: "Harmony Endpoint Troubleshooting", levels: ["One Level"] },
+          { name: "On-Prem Server Side", levels: ["One Level"] }
+        ]
+      },
+      {
+        category: "SMB",
+        subtitle: "SMB core training",
+        trainings: [
+          { name: "SMB", levels: ["Basic", "Advanced"] }
         ]
       }
     ];
@@ -869,7 +885,10 @@
                   <option value="Low">Low</option>
                 </select>
               </div>
-              <input type="text" class="comment" placeholder="Optional comment" />
+              <div class="row-control comment-control">
+                <label>Comment</label>
+                <input type="text" class="comment" placeholder="Optional comment" />
+              </div>
             </div>`;
         }).join("");
 
@@ -925,7 +944,10 @@
                 <option value="Low">Low</option>
               </select>
             </div>
-            <input type="text" class="custom-comment" placeholder="Optional comment" />
+            <div class="row-control comment-control">
+              <label>Comment</label>
+              <input type="text" class="custom-comment" placeholder="Optional comment" />
+            </div>
           </div>`;
       }).join("");
 
